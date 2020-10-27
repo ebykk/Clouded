@@ -1,0 +1,15 @@
+<powershell>
+$file = $env:SystemRoot + "\Temp\" + (Get-Date).ToString("MM-dd-yy-hh-mm")
+New-Item $file -ItemType file
+# refer to logs @ 
+   # EC2Launch: C:\ProgramData\Amazon\EC2-Windows\Launch\Log\UserdataExecution.log
+   # EC2Config: C:\Program Files\Amazon\Ec2ConfigService\Logs\Ec2Config.log
+   # EC2Launch v2 (Preview AMIs) is C:\ProgramData\Amazon\EC2Launch\log\agent.log.
+   # To enable user data execution with EC2Launch C:\ProgramData\Amazon\EC2-Windows\Launch\Scripts\InitializeInstance.ps1 –Schedule
+   # To enable user data execution with EC2Config C:\Program Files\Amazon\Ec2ConfigService\Ec2ConfigServiceSetting.exe User Data, select Enable UserData execution for next service start.
+   # To retrieve http://169.254.169.254/latest/user-data
+   # IMDS Invoke-RestMethod -Headers @{"X-aws-ec2-metadata-token" = $token} -Method GET -Uri http://169.254.169.254/latest/user-data
+   # Invoke-RestMethod -Headers @{"X-aws-ec2-metadata-token" = $token} -Method GET -Uri http://169.254.169.254/latest/user-data
+   # Refer to https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-user-data.html#user-data-powershell https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/instancedata-add-user-data.html
+</powershell>
+<persist>true</persist>
